@@ -1,0 +1,439 @@
+.register-page {
+  min-height: 100vh;
+  background: #070707;
+  color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.register-container {
+  width: 100%;
+  max-width: 1180px;
+  min-height: 680px;
+
+  display: grid;
+  grid-template-columns: 40% 60%;
+
+  border: 1px solid #252525;
+  background: #0b0b0b;
+}
+
+
+/* =========================
+   LEFT SECURITY PANEL
+========================= */
+.register-security {
+  position: relative;
+  padding: 48px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  border-right: 1px solid #252525;
+
+  background-color: #090909;
+
+  background-image:
+    linear-gradient(rgba(122, 255, 170, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(122, 255, 170, 0.035) 1px, transparent 1px);
+
+  background-size: 42px 42px;
+}
+
+.register-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+.register-logo span {
+  width: 9px;
+  height: 9px;
+  background: #7affaa;
+  display: block;
+  box-shadow: 0 0 12px rgba(122, 255, 170, 0.35);
+}
+
+/* CONTENT */
+
+.security-content {
+  max-width: 400px;
+}
+
+.security-eyebrow {
+  color: #7affaa;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+.security-content h1 {
+  font-size: 52px;
+  line-height: 1;
+  letter-spacing: -2px;
+  margin-bottom: 22px;
+}
+
+.security-content > p {
+  color: #858585;
+  font-size: 14px;
+  line-height: 1.7;
+  max-width: 330px;
+}
+
+
+/* SECURITY POINTS */
+
+.security-points {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.security-point {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.security-point > span {
+  color: #7affaa;
+  font-size: 10px;
+  letter-spacing: 1px;
+  padding-top: 3px;
+}
+.security-point strong {
+  display: block;
+
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  margin-bottom: 5px;
+}
+
+.security-point small {
+  color: #666;
+  font-size: 11px;
+}
+
+
+/* FOOTER */
+
+.security-footer {
+  display: flex;
+  justify-content: space-between;
+
+  color: #444;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+}
+
+
+/* =========================
+   RIGHT REGISTER FORM
+========================= */
+
+.register-form {
+  padding: 70px 80px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.register-form-header {
+  margin-bottom: 34px;
+}
+
+.register-eyebrow {
+  color: #7affaa;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.register-form h2 {
+  font-size: 34px;
+  letter-spacing: -1px;
+  margin-bottom: 10px;
+}
+
+.register-description {
+  color: #666;
+  font-size: 13px;
+}
+
+
+/* FORM */
+
+.register-group {
+  margin-bottom: 19px;
+}
+
+.register-group label {
+  display: block;
+
+  color: #aaa;
+  font-size: 11px;
+  margin-bottom: 8px;
+}
+
+.register-group input {
+  width: 100%;
+  height: 48px;
+
+  padding: 0 14px;
+
+  border: 1px solid #292929;
+  background: #090909;
+
+  color: #f5f5f5;
+  outline: none;
+
+  font-size: 13px;
+
+  transition: border-color 0.2s;
+}
+
+.register-group input::placeholder {
+  color: #444;
+}
+
+.register-group input:focus {
+  border-color: #7affaa;
+  box-shadow: 0 0 0 1px rgba(122, 255, 170, 0.08);
+}
+
+/* PASSWORD */
+
+.register-password {
+  position: relative;
+}
+
+.register-password input {
+  padding-right: 65px;
+}
+
+.register-password button {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  border: none;
+  background: transparent;
+
+  color: #666;
+  font-size: 10px;
+  text-transform: uppercase;
+
+  cursor: pointer;
+}
+
+.register-password button:hover {
+  color: #7affaa;
+}
+
+
+/* PASSWORD NOTE */
+
+.password-note {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  color: #555;
+  font-size: 10px;
+
+  margin-top: -5px;
+  margin-bottom: 24px;
+}
+
+.password-note span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #7affaa;
+}
+
+
+/* BUTTON */
+
+.register-button {
+  width: 100%;
+  height: 50px;
+
+  border: none;
+  background: #7affaa;
+  color: #050505;
+
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.register-button span {
+  font-size: 18px;
+}
+
+.register-button:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+
+/* BOTTOM */
+
+.register-bottom {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+
+  margin-top: 28px;
+
+  font-size: 11px;
+}
+
+.register-bottom p {
+  color: #555;
+}
+
+.register-bottom a {
+  color: #aaa;
+  text-decoration: none;
+}
+.register-bottom a:hover {
+  color: #7affaa;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 850px) {
+
+  .register-page {
+    padding: 20px;
+  }
+
+  .register-container {
+    grid-template-columns: 1fr;
+  }
+
+  .register-security {
+    min-height: 360px;
+    border-right: none;
+    border-bottom: 1px solid #252525;
+  }
+
+  .security-content h1 {
+    font-size: 40px;
+  }
+
+  .security-points {
+    margin-top: 30px;
+  }
+
+  .register-form {
+    padding: 50px 35px;
+  }
+}
+
+
+@media (max-width: 500px) {
+
+  .register-page {
+    padding: 0;
+  }
+
+  .register-container {
+    border: none;
+  }
+
+  .register-security {
+    padding: 30px 25px;
+  }
+
+  .register-form {
+    padding: 40px 25px;
+  }
+
+  .security-content h1 {
+    font-size: 34px;
+  }
+
+  .register-form h2 {
+    font-size: 28px;
+  }
+
+}
+
+/* =========================
+   PASSWORD STRENGTH
+========================= */
+
+.password-strength {
+  margin-top: 9px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.strength-bars {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+}
+
+.strength-bars span {
+  height: 3px;
+  flex: 1;
+
+  background: #242424;
+
+  transition: background 0.2s;
+}
+
+.strength-bars span.active {
+  background: #7affaa;
+}
+
+.password-strength small {
+  color: #666;
+  font-size: 9px;
+  min-width: 35px;
+  text-align: right;
+}
+.register-error {
+  margin-top: 14px;
+  padding: 12px 14px;
+
+  border: 1px solid #522222;
+  background: #180d0d;
+
+  color: #ff7777;
+  font-size: 11px;
+}
+
+.register-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
