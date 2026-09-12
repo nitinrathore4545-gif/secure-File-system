@@ -1,0 +1,440 @@
+.dashboard {
+    position: relative;
+    min-height: 100vh;
+    padding: 40px 7%;
+    background: #050505;
+    color: #f5f5f5;
+    overflow: hidden;
+}
+
+
+/* =========================
+   SECURITY GRID
+========================= */
+
+.dashboard-grid {
+    position: fixed;
+    inset: 0;
+
+    background-image:
+        linear-gradient(rgba(122, 255, 170, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(122, 255, 170, 0.035) 1px, transparent 1px);
+
+    background-size: 45px 45px;
+
+    pointer-events: none;
+    z-index: 0;
+}
+
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+.dashboard-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1500px;
+    margin: auto;
+}
+
+
+/* =========================
+   LIGHTNING
+========================= */
+
+.lightning {
+    position: fixed;
+    width: 2px;
+    height: 320px;
+
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        #7affaa,
+        transparent
+    );
+
+    opacity: 0.35;
+    filter: blur(0.5px);
+
+    pointer-events: none;
+    z-index: 1;
+
+    animation: lightningMove 5s ease-in-out infinite;
+}
+
+.lightning-one {
+    top: 5%;
+    left: 12%;
+    transform: rotate(35deg);
+}
+
+.lightning-two {
+    top: 15%;
+    right: 18%;
+    height: 260px;
+    transform: rotate(-40deg);
+    animation-delay: 1.5s;
+}
+
+.lightning-three {
+    bottom: 5%;
+    left: 50%;
+    height: 220px;
+    transform: rotate(70deg);
+    animation-delay: 3s;
+}
+
+@keyframes lightningMove {
+
+    0%,
+    100% {
+        opacity: 0.08;
+        transform: scaleY(0.8) rotate(35deg);
+    }
+
+    50% {
+        opacity: 0.4;
+        transform: scaleY(1.1) rotate(35deg);
+    }
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 45px;
+}
+
+.dashboard-title {
+    font-size: 34px;
+    font-weight: 700;
+    letter-spacing: -1px;
+
+    text-shadow:
+        0 0 20px rgba(122, 255, 170, 0.15);
+}
+
+.dashboard-subtitle {
+    margin-top: 8px;
+    color: #777;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+}
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+.logout-button {
+    padding: 10px 22px;
+
+    background: #080808;
+    border: 1px solid #292929;
+
+    color: #f5f5f5;
+
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+}
+
+.logout-button:hover {
+    border-color: #7affaa;
+    color: #7affaa;
+
+    box-shadow:
+        0 0 18px rgba(122, 255, 170, 0.12);
+}
+
+
+/* =========================
+   UPLOAD PANEL
+========================= */
+
+.upload-box {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    min-height: 145px;
+
+    padding: 35px;
+
+    margin-bottom: 50px;
+
+    background: #080808;
+
+    border: 1px solid #242424;
+
+    overflow: hidden;
+}
+
+
+/* Green corner line */
+
+.upload-box::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 90px;
+    height: 2px;
+
+    background: #7affaa;
+
+    box-shadow:
+        0 0 12px rgba(122, 255, 170, 0.6);
+}
+
+
+/* Right corner */
+
+.upload-box::after {
+    content: "";
+
+    position: absolute;
+
+    bottom: 0;
+    right: 0;
+
+    width: 90px;
+    height: 2px;
+
+    background: #7affaa;
+
+    box-shadow:
+        0 0 12px rgba(122, 255, 170, 0.6);
+}
+
+
+/* File input */
+
+.upload-box input {
+    color: #aaa;
+}
+
+
+/* =========================
+   UPLOAD BUTTON
+========================= */
+
+.upload-button {
+    padding: 12px 28px;
+
+    background: transparent;
+
+    border: 1px solid #7affaa;
+
+    color: #7affaa;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    transition: all 0.25s ease;
+}
+
+.upload-button:hover {
+    background: #7affaa;
+    color: #050505;
+
+    box-shadow:
+        0 0 20px rgba(122, 255, 170, 0.25);
+}
+
+
+/* =========================
+   FILE SECTION
+========================= */
+
+.files-title {
+    margin-bottom: 22px;
+
+    font-size: 20px;
+
+    letter-spacing: -0.3px;
+}
+
+
+/* =========================
+   FILE CARD
+========================= */
+
+.file-card {
+    position: relative;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 20px 22px;
+
+    margin-bottom: 12px;
+
+    background: #080808;
+
+    border: 1px solid #202020;
+
+    transition:
+        border-color 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+
+    overflow: hidden;
+}
+
+
+.file-card::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 3px;
+    height: 100%;
+
+    background: transparent;
+
+    transition: 0.25s ease;
+}
+
+
+.file-card:hover {
+    border-color: #333;
+
+    transform: translateX(4px);
+
+    box-shadow:
+        -5px 0 20px rgba(122, 255, 170, 0.05);
+}
+
+
+.file-card:hover::before {
+    background: #7affaa;
+
+    box-shadow:
+        0 0 12px rgba(122, 255, 170, 0.5);
+}
+
+
+/* =========================
+   FILE INFO
+========================= */
+
+.file-name {
+    font-weight: 500;
+    font-size: 15px;
+
+    color: #f2f2f2;
+}
+
+.file-meta {
+    margin-top: 7px;
+
+    color: #666;
+
+    font-size: 12px;
+}
+
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+
+.file-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.file-actions button {
+    padding: 8px 13px;
+
+    background: transparent;
+
+    border: 1px solid #292929;
+
+    color: #aaa;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+.file-actions button:hover {
+    border-color: #7affaa;
+    color: #7affaa;
+
+    box-shadow:
+        0 0 12px rgba(122, 255, 170, 0.08);
+}
+
+
+/* =========================
+   EMPTY STATE
+========================= */
+
+.dashboard-content > p {
+    color: #666;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    .dashboard {
+        padding: 25px 20px;
+    }
+
+    .dashboard-header {
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .dashboard-title {
+        font-size: 27px;
+    }
+
+    .upload-box {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 25px;
+    }
+
+    .file-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+    }
+
+    .file-actions {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .file-actions button {
+        flex: 1;
+    }
+
+    .logout-button {
+        padding: 8px 15px;
+    }
+}

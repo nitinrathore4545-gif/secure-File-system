@@ -4,12 +4,14 @@ import connectDB from "./config/db.js"
 import fileroutes from "./routes/fileroutes.js"
 import authroutes from "./routes/authroutes.js"
 import multer from "multer"
+import cors from "cors"
 
 
 
 dotenv.config()
 
 const app = express()
+app.use(cors())
 
 app.use(express.json())
 
