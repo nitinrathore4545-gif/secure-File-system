@@ -5,6 +5,7 @@ import fileroutes from "./routes/fileroutes.js"
 import authroutes from "./routes/authroutes.js"
 import multer from "multer"
 import cors from "cors"
+import {generalLimiter} from "./middleware/rateLimitmiddleware.js"
 
 
 
@@ -14,6 +15,7 @@ const app = express()
 app.use(cors())
 
 app.use(express.json())
+app.use(generalLimiter)
 
 
 connectDB()

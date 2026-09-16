@@ -3,11 +3,12 @@ import bcrypt from "bcryptjs"
 import User from "../models/user.js"
 import jwt from "jsonwebtoken"
 import authMiddleware from "../middleware/authmiddleware.js"
+import { loginLimiter,registerLimiter } from "../middleware/rateLimitmiddleware.js"
 
 
 const router = express.Router()
 
-router.post("/register",async (req,res)=>{
+router.post("/register",registerLimiter,async (req,res)=>{
    const {name,email,password}= req.body
   const existinguser = await User.findOne({email})
   if(existinguser){
@@ -31,7 +32,7 @@ router.post("/register",async (req,res)=>{
   })
 })
 
-router.post("/login",async (req,res)=>{
+router.post("/login",loginLimiter,async (req,res)=>{
     const {email,password} = req.body
     const user = await User.findOne({email})
     if(!user){

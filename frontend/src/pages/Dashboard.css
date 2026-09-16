@@ -1,15 +1,14 @@
 .dashboard {
     position: relative;
     min-height: 100vh;
-    padding: 40px 7%;
+    padding: 32px 6%;
     background: #050505;
     color: #f5f5f5;
     overflow: hidden;
 }
 
-
 /* =========================
-   SECURITY GRID
+   BACKGROUND
 ========================= */
 
 .dashboard-grid {
@@ -17,25 +16,44 @@
     inset: 0;
 
     background-image:
-        linear-gradient(rgba(122, 255, 170, 0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(122, 255, 170, 0.035) 1px, transparent 1px);
+        linear-gradient(
+            rgba(122, 255, 170, 0.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(122, 255, 170, 0.025) 1px,
+            transparent 1px
+        );
 
-    background-size: 45px 45px;
+    background-size: 55px 55px;
 
     pointer-events: none;
     z-index: 0;
 }
 
+.glow {
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
 
-/* =========================
-   MAIN CONTENT
-========================= */
+    background: rgba(122, 255, 170, 0.025);
 
-.dashboard-content {
-    position: relative;
-    z-index: 2;
-    max-width: 1500px;
-    margin: auto;
+    filter: blur(100px);
+
+    pointer-events: none;
+    z-index: 0;
+}
+
+.glow-one {
+    top: -250px;
+    left: -180px;
+}
+
+.glow-two {
+    right: -250px;
+    bottom: -250px;
 }
 
 
@@ -45,59 +63,172 @@
 
 .lightning {
     position: fixed;
-    width: 2px;
-    height: 320px;
+
+    width: 3px;
+    height: 380px;
 
     background: linear-gradient(
         to bottom,
         transparent,
+        rgba(122, 255, 170, 0.15),
         #7affaa,
+        rgba(122, 255, 170, 0.5),
         transparent
     );
 
-    opacity: 0.35;
-    filter: blur(0.5px);
+    filter:
+        drop-shadow(0 0 5px rgba(122, 255, 170, 0.8))
+        drop-shadow(0 0 15px rgba(122, 255, 170, 0.3));
+
+    opacity: 0;
 
     pointer-events: none;
+
     z-index: 1;
 
-    animation: lightningMove 5s ease-in-out infinite;
+    animation: lightningFlash 5s infinite;
 }
 
 .lightning-one {
-    top: 5%;
-    left: 12%;
-    transform: rotate(35deg);
+    top: -40px;
+    left: 15%;
+
+    height: 420px;
+
+    transform: rotate(27deg);
+
+    clip-path: polygon(
+        48% 0%,
+        60% 0%,
+        55% 18%,
+        76% 18%,
+        48% 42%,
+        63% 42%,
+        28% 72%,
+        43% 72%,
+        10% 100%,
+        20% 70%,
+        7% 70%,
+        35% 40%,
+        20% 40%,
+        45% 15%
+    );
+
+    animation-delay: 1s;
 }
 
 .lightning-two {
-    top: 15%;
-    right: 18%;
-    height: 260px;
-    transform: rotate(-40deg);
-    animation-delay: 1.5s;
+    top: 12%;
+    right: 13%;
+
+    height: 330px;
+
+    transform: rotate(-32deg);
+
+    clip-path: polygon(
+        52% 0%,
+        64% 0%,
+        57% 20%,
+        82% 20%,
+        49% 46%,
+        65% 46%,
+        24% 76%,
+        38% 76%,
+        5% 100%,
+        17% 70%,
+        3% 70%,
+        37% 42%,
+        22% 42%,
+        47% 17%
+    );
+
+    animation-delay: 2.8s;
 }
 
 .lightning-three {
-    bottom: 5%;
-    left: 50%;
-    height: 220px;
-    transform: rotate(70deg);
-    animation-delay: 3s;
+    bottom: -60px;
+    left: 48%;
+
+    height: 300px;
+
+    transform: rotate(62deg);
+
+    clip-path: polygon(
+        50% 0%,
+        63% 0%,
+        56% 22%,
+        80% 22%,
+        48% 48%,
+        64% 48%,
+        24% 77%,
+        38% 77%,
+        7% 100%,
+        18% 72%,
+        3% 72%,
+        36% 44%,
+        21% 44%,
+        46% 18%
+    );
+
+    animation-delay: 4s;
 }
 
-@keyframes lightningMove {
+@keyframes lightningFlash {
 
-    0%,
-    100% {
-        opacity: 0.08;
-        transform: scaleY(0.8) rotate(35deg);
+    0% {
+        opacity: 0;
+    }
+
+    7% {
+        opacity: 0.05;
+    }
+
+    8% {
+        opacity: 0.65;
+    }
+
+    9% {
+        opacity: 0.1;
+    }
+
+    10% {
+        opacity: 0.75;
+    }
+
+    12% {
+        opacity: 0;
     }
 
     50% {
-        opacity: 0.4;
-        transform: scaleY(1.1) rotate(35deg);
+        opacity: 0;
     }
+
+    51% {
+        opacity: 0.45;
+    }
+
+    53% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+
+/* =========================
+   CONTENT
+========================= */
+
+.dashboard-content {
+    position: relative;
+
+    z-index: 5;
+
+    max-width: 1500px;
+
+    margin: auto;
 }
 
 
@@ -107,196 +238,505 @@
 
 .dashboard-header {
     display: flex;
+
     justify-content: space-between;
     align-items: center;
 
-    margin-bottom: 45px;
+    padding-bottom: 28px;
+
+    border-bottom: 1px solid #1c1c1c;
+
+    margin-bottom: 55px;
+}
+
+.brand-section {
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+}
+
+.brand-mark {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid #303030;
+
+    position: relative;
+}
+
+.brand-mark::before {
+    content: "";
+
+    position: absolute;
+
+    width: 16px;
+    height: 16px;
+
+    border: 1px solid #7affaa;
+
+    transform: rotate(45deg);
+}
+
+.brand-mark span {
+    width: 5px;
+    height: 5px;
+
+    background: #7affaa;
+
+    box-shadow: 0 0 12px #7affaa;
+
+    z-index: 2;
+}
+
+.brand-label {
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    color: #666;
+
+    margin-bottom: 4px;
 }
 
 .dashboard-title {
-    font-size: 34px;
-    font-weight: 700;
-    letter-spacing: -1px;
+    font-size: 22px;
 
-    text-shadow:
-        0 0 20px rgba(122, 255, 170, 0.15);
+    letter-spacing: 4px;
+
+    font-weight: 600;
 }
 
-.dashboard-subtitle {
-    margin-top: 8px;
+.header-right {
+    display: flex;
+
+    align-items: center;
+
+    gap: 28px;
+}
+
+.connection-status {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
     color: #777;
-    font-size: 14px;
-    letter-spacing: 0.3px;
+
+    font-size: 10px;
+
+    letter-spacing: 1.5px;
 }
 
+.status-dot {
+    width: 6px;
+    height: 6px;
 
-/* =========================
-   LOGOUT
-========================= */
+    border-radius: 50%;
+
+    background: #7affaa;
+
+    box-shadow:
+        0 0 7px #7affaa,
+        0 0 15px rgba(122, 255, 170, 0.4);
+}
 
 .logout-button {
-    padding: 10px 22px;
+    display: flex;
 
-    background: #080808;
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 10px 15px;
+
+    background: transparent;
+
     border: 1px solid #292929;
 
-    color: #f5f5f5;
+    color: #aaa;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
 
     cursor: pointer;
 
-    transition: all 0.25s ease;
+    transition: 0.25s ease;
+}
+
+.logout-arrow {
+    color: #666;
+
+    transition: 0.25s ease;
 }
 
 .logout-button:hover {
     border-color: #7affaa;
+
     color: #7affaa;
 
     box-shadow:
-        0 0 18px rgba(122, 255, 170, 0.12);
+        0 0 20px rgba(122, 255, 170, 0.07);
+}
+
+.logout-button:hover .logout-arrow {
+    color: #7affaa;
+
+    transform: translateX(3px);
 }
 
 
 /* =========================
-   UPLOAD PANEL
+   WELCOME
 ========================= */
 
-.upload-box {
-    position: relative;
-
+.welcome-section {
     display: flex;
-    align-items: center;
-    gap: 20px;
 
-    min-height: 145px;
+    justify-content: space-between;
+    align-items: flex-end;
 
-    padding: 35px;
+    gap: 40px;
 
-    margin-bottom: 50px;
+    margin-bottom: 65px;
+}
 
-    background: #080808;
+.welcome-tag,
+.section-index {
+    color: #7affaa;
 
-    border: 1px solid #242424;
+    font-size: 9px;
 
-    overflow: hidden;
+    letter-spacing: 2.5px;
+
+    margin-bottom: 13px;
+
+    opacity: 0.8;
+}
+
+.welcome-section h2 {
+    font-size: clamp(35px, 5vw, 62px);
+
+    line-height: 1;
+
+    font-weight: 500;
+
+    letter-spacing: -3px;
+
+    max-width: 700px;
+}
+
+.welcome-section h2 span {
+    color: #555;
+}
+
+.welcome-text {
+    color: #707070;
+
+    font-size: 13px;
+
+    margin-top: 18px;
+
+    max-width: 440px;
+
+    line-height: 1.7;
+}
+
+.vault-stats {
+    display: flex;
+
+    border: 1px solid #1e1e1e;
+
+    background: rgba(8, 8, 8, 0.7);
+}
+
+.stat-box {
+    min-width: 105px;
+
+    padding: 18px;
+
+    border-right: 1px solid #1e1e1e;
+}
+
+.stat-box:last-child {
+    border-right: none;
+}
+
+.stat-label {
+    display: block;
+
+    color: #555;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 10px;
+}
+
+.stat-box strong {
+    font-size: 18px;
+
+    font-weight: 500;
+
+    color: #ddd;
+}
+
+.stat-box .online-text {
+    color: #7affaa;
+
+    font-size: 12px;
+
+    letter-spacing: 1px;
 }
 
 
-/* Green corner line */
+/* =========================
+   UPLOAD
+========================= */
+
+.upload-section {
+    margin-bottom: 65px;
+}
+
+.upload-heading,
+.files-header {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-end;
+
+    margin-bottom: 18px;
+}
+
+.upload-heading h3,
+.files-header h3 {
+    font-size: 18px;
+
+    font-weight: 500;
+}
+
+.upload-limit {
+    color: #4d4d4d;
+
+    font-size: 9px;
+
+    letter-spacing: 1.5px;
+}
+
+.upload-box {
+    min-height: 145px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+
+    padding: 28px 30px;
+
+    background: #080808;
+
+    border: 1px solid #222;
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition: 0.3s ease;
+}
 
 .upload-box::before {
     content: "";
 
     position: absolute;
 
-    top: 0;
     left: 0;
+    top: 0;
 
-    width: 90px;
-    height: 2px;
-
-    background: #7affaa;
-
-    box-shadow:
-        0 0 12px rgba(122, 255, 170, 0.6);
-}
-
-
-/* Right corner */
-
-.upload-box::after {
-    content: "";
-
-    position: absolute;
-
-    bottom: 0;
-    right: 0;
-
-    width: 90px;
-    height: 2px;
+    width: 4px;
+    height: 100%;
 
     background: #7affaa;
 
     box-shadow:
-        0 0 12px rgba(122, 255, 170, 0.6);
+        0 0 20px rgba(122, 255, 170, 0.5);
 }
 
+.upload-box:hover {
+    border-color: #333;
 
-/* File input */
-
-.upload-box input {
-    color: #aaa;
+    box-shadow:
+        0 15px 50px rgba(0, 0, 0, 0.3);
 }
 
+.upload-icon {
+    width: 58px;
+    height: 58px;
 
-/* =========================
-   UPLOAD BUTTON
-========================= */
+    display: flex;
 
-.upload-button {
-    padding: 12px 28px;
+    justify-content: center;
+    align-items: center;
 
-    background: transparent;
-
-    border: 1px solid #7affaa;
+    border: 1px solid #292929;
 
     color: #7affaa;
 
-    cursor: pointer;
+    font-size: 25px;
+
+    flex-shrink: 0;
+}
+
+.upload-info {
+    flex: 1;
+}
+
+.upload-main {
+    color: #ddd;
 
     font-size: 14px;
 
-    transition: all 0.25s ease;
+    margin-bottom: 7px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+.upload-sub {
+    color: #555;
+
+    font-size: 11px;
+}
+
+.upload-controls {
+    display: flex;
+
+    gap: 9px;
+}
+
+.choose-button,
+.upload-button {
+    padding: 11px 17px;
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+}
+
+.choose-button {
+    border: 1px solid #292929;
+
+    color: #aaa;
+
+    background: #0c0c0c;
+}
+
+.choose-button:hover {
+    border-color: #555;
+
+    color: #ddd;
+}
+
+.choose-button input {
+    display: none;
+}
+
+.upload-button {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    border: 1px solid #7affaa;
+
+    background: #7affaa;
+
+    color: #050505;
+
+    font-weight: 600;
+}
+
+.upload-button span {
+    font-size: 15px;
+
+    transition: 0.25s ease;
 }
 
 .upload-button:hover {
-    background: #7affaa;
-    color: #050505;
-
     box-shadow:
-        0 0 20px rgba(122, 255, 170, 0.25);
+        0 0 25px rgba(122, 255, 170, 0.18);
+}
+
+.upload-button:hover span {
+    transform: translate(3px, -3px);
 }
 
 
 /* =========================
-   FILE SECTION
+   FILES
 ========================= */
 
-.files-title {
-    margin-bottom: 22px;
-
-    font-size: 20px;
-
-    letter-spacing: -0.3px;
+.files-section {
+    margin-bottom: 50px;
 }
 
+.files-header {
+    margin-bottom: 18px;
+}
 
-/* =========================
-   FILE CARD
-========================= */
+.file-count {
+    color: #555;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+}
+
+.files-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
 
 .file-card {
-    position: relative;
-
     display: flex;
-    justify-content: space-between;
+
     align-items: center;
 
-    padding: 20px 22px;
+    min-height: 80px;
 
-    margin-bottom: 12px;
+    padding: 12px 18px;
 
     background: #080808;
 
-    border: 1px solid #202020;
+    border: 1px solid #1b1b1b;
 
     transition:
         border-color 0.25s ease,
         transform 0.25s ease,
-        box-shadow 0.25s ease;
+        background 0.25s ease;
 
-    overflow: hidden;
+    position: relative;
 }
-
 
 .file-card::before {
     content: "";
@@ -306,82 +746,154 @@
     left: 0;
     top: 0;
 
-    width: 3px;
-    height: 100%;
+    width: 2px;
+    height: 0;
 
-    background: transparent;
+    background: #7affaa;
+
+    box-shadow: 0 0 12px #7affaa;
+
+    transition: height 0.25s ease;
+}
+
+.file-card:hover {
+    border-color: #303030;
+
+    background: #0b0b0b;
+
+    transform: translateX(4px);
+}
+
+.file-card:hover::before {
+    height: 100%;
+}
+
+.file-number {
+    width: 40px;
+
+    color: #363636;
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+}
+
+.file-type {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #292929;
+
+    color: #7affaa;
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+
+    margin-right: 18px;
 
     transition: 0.25s ease;
 }
 
-
-.file-card:hover {
-    border-color: #333;
-
-    transform: translateX(4px);
+.file-card:hover .file-type {
+    border-color: rgba(122, 255, 170, 0.4);
 
     box-shadow:
-        -5px 0 20px rgba(122, 255, 170, 0.05);
+        0 0 18px rgba(122, 255, 170, 0.05);
 }
 
+.file-details {
+    flex: 1;
 
-.file-card:hover::before {
-    background: #7affaa;
-
-    box-shadow:
-        0 0 12px rgba(122, 255, 170, 0.5);
+    min-width: 0;
 }
-
-
-/* =========================
-   FILE INFO
-========================= */
 
 .file-name {
-    font-weight: 500;
-    font-size: 15px;
+    color: #ddd;
 
-    color: #f2f2f2;
+    font-size: 13px;
+
+    font-weight: 500;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
 }
 
 .file-meta {
+    display: flex;
+
+    gap: 8px;
+
+    align-items: center;
+
     margin-top: 7px;
 
-    color: #666;
+    color: #505050;
 
-    font-size: 12px;
+    font-size: 9px;
+
+    letter-spacing: 0.5px;
 }
 
-
-/* =========================
-   ACTION BUTTONS
-========================= */
+.meta-divider {
+    color: #292929;
+}
 
 .file-actions {
     display: flex;
-    gap: 8px;
+
+    gap: 6px;
+
+    margin-left: 20px;
 }
 
-.file-actions button {
-    padding: 8px 13px;
+.action-button,
+.delete-button {
+    padding: 8px 11px;
 
     background: transparent;
 
-    border: 1px solid #292929;
+    border: 1px solid #252525;
 
-    color: #aaa;
+    color: #777;
+
+    font-size: 9px;
+
+    letter-spacing: 0.5px;
 
     cursor: pointer;
 
-    transition: all 0.2s ease;
+    transition: 0.2s ease;
 }
 
-.file-actions button:hover {
-    border-color: #7affaa;
-    color: #7affaa;
+.action-button span {
+    margin-right: 5px;
 
-    box-shadow:
-        0 0 12px rgba(122, 255, 170, 0.08);
+    color: #555;
+}
+
+.action-button:hover {
+    border-color: #7affaa;
+
+    color: #7affaa;
+}
+
+.action-button:hover span {
+    color: #7affaa;
+}
+
+.delete-button:hover {
+    border-color: #d96b6b;
+
+    color: #d96b6b;
 }
 
 
@@ -389,52 +901,257 @@
    EMPTY STATE
 ========================= */
 
-.dashboard-content > p {
-    color: #666;
+.empty-state {
+    min-height: 190px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    border: 1px dashed #222;
+
+    background: #080808;
+
+    text-align: center;
+}
+
+.empty-icon {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid #292929;
+
+    color: #7affaa;
+
+    font-size: 20px;
+
+    margin-bottom: 15px;
+}
+
+.empty-state h4 {
+    font-size: 13px;
+
+    font-weight: 500;
+
+    color: #bbb;
+
+    margin-bottom: 7px;
+}
+
+.empty-state p {
+    color: #4f4f4f;
+
+    font-size: 10px;
+
+    letter-spacing: 0.5px;
+}
+
+.loader {
+    width: 25px;
+    height: 25px;
+
+    border: 1px solid #292929;
+
+    border-top-color: #7affaa;
+
+    border-radius: 50%;
+
+    animation: spin 0.8s linear infinite;
+
+    margin-bottom: 15px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 
 /* =========================
-   MOBILE
+   FOOTER
 ========================= */
+
+.dashboard-footer {
+    display: flex;
+
+    justify-content: space-between;
+
+    padding-top: 22px;
+
+    border-top: 1px solid #171717;
+
+    color: #383838;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+.dashboard-footer span:last-child {
+    color: #527961;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+    .dashboard {
+        padding: 28px 25px;
+    }
+
+    .welcome-section {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .vault-stats {
+        width: 100%;
+    }
+
+    .stat-box {
+        flex: 1;
+    }
+
+    .file-actions {
+        flex-wrap: wrap;
+    }
+
+}
 
 @media (max-width: 700px) {
 
     .dashboard {
-        padding: 25px 20px;
+        padding: 22px 18px;
     }
 
     .dashboard-header {
-        align-items: flex-start;
-        gap: 20px;
+        margin-bottom: 40px;
+    }
+
+    .header-right {
+        gap: 12px;
+    }
+
+    .connection-status {
+        display: none;
     }
 
     .dashboard-title {
-        font-size: 27px;
+        font-size: 17px;
+    }
+
+    .welcome-section h2 {
+        font-size: 40px;
+
+        letter-spacing: -2px;
+    }
+
+    .welcome-section {
+        margin-bottom: 45px;
+    }
+
+    .vault-stats {
+        overflow-x: auto;
+    }
+
+    .stat-box {
+        min-width: 90px;
+    }
+
+    .upload-heading,
+    .files-header {
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+    .upload-limit {
+        display: none;
     }
 
     .upload-box {
         flex-direction: column;
+
         align-items: flex-start;
+
         padding: 25px;
     }
 
+    .upload-info {
+        width: 100%;
+    }
+
+    .upload-controls {
+        width: 100%;
+    }
+
+    .choose-button,
+    .upload-button {
+        flex: 1;
+
+        text-align: center;
+    }
+
     .file-card {
-        flex-direction: column;
         align-items: flex-start;
-        gap: 18px;
+
+        padding: 15px;
+
+        flex-wrap: wrap;
+    }
+
+    .file-number {
+        display: none;
+    }
+
+    .file-type {
+        margin-right: 12px;
+    }
+
+    .file-details {
+        width: calc(100% - 65px);
+
+        flex: none;
     }
 
     .file-actions {
         width: 100%;
-        flex-wrap: wrap;
+
+        margin-left: 60px;
+
+        margin-top: 12px;
     }
 
-    .file-actions button {
+    .action-button,
+    .delete-button {
         flex: 1;
     }
 
-    .logout-button {
-        padding: 8px 15px;
+    .dashboard-footer {
+        flex-wrap: wrap;
+
+        gap: 10px;
     }
+
+    .lightning-one {
+        left: 2%;
+    }
+
+    .lightning-two {
+        right: 2%;
+    }
+
 }

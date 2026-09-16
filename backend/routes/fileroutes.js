@@ -3,12 +3,14 @@ import upload from "../middleware/uploadmiddleware.js"
 import authMiddleware from "../middleware/authmiddleware.js"
 import File from "../models/file.js"
 import fs from "fs/promises"
+import { uploadLimiter,downloadLimiter } from "../middleware/rateLimitmiddleware.js"
 
 const router = express.Router()
 
 router.post(
     "/upload",
     authMiddleware,
+    uploadLimiter,
     upload.single("file"),
     async (req,res)=>{
         try {
@@ -41,13 +43,37 @@ router.post(
 
 router.get("/",authMiddleware,async (req,res)=>{
     try{
+        const page = Number(req.query.page) || 1;
+        const limit = Number(req.query.limit) || 10;
+       
+
+        const skip = (page-1) * limit
+
+         const search = req.query.search || ""
+
         const files = await File.find({
-            owner:req.user
+            owner:req.user,
+            originalName :{
+                $regex : search,
+                $options : "i"
+            }
         }).sort({
             createdAt : -1
+        }).skip(skip)
+        .limit(limit)
+        const totalFiles = await File.countDocuments({
+            owner:req.user,
+            originalName :{
+                $regex:search,
+                $options:"i"
+            }
         })
         res.json({
-            files
+            files,
+            page,
+            limit,
+            totalFiles,
+            totalPages:Math.ceil(totalFiles/limit)
         })
     }catch(error){
         res.status(500).json({
@@ -78,7 +104,7 @@ router.get("/:id",authMiddleware,async (req,res)=>{
         })
     }
 })
-router.get("/:id/download",authMiddleware,async (req,res)=>{
+router.get("/:id/download",authMiddleware,downloadLimiter,async (req,res)=>{
     try{
         const file = await File.findOne({
             _id : req.params.id,
