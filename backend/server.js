@@ -6,6 +6,7 @@ import authroutes from "./routes/authroutes.js"
 import multer from "multer"
 import cors from "cors"
 import {generalLimiter} from "./middleware/rateLimitmiddleware.js"
+import errorMiddleware from "./middleware/errormiddleware.js"
 
 
 
@@ -23,23 +24,24 @@ connectDB()
 app.use("/api/auth",authroutes)
 app.use("/api/files",fileroutes)
 
+
 app.use((err,req,res,next)=>{
     if(err instanceof multer.MulterError){
         if(err.code === "LIMIT_FILE_SIZE"){
             return res.status(400).json({
-                message:"File size cannot exceed 10 MB"
+                message : "File size cannot exceed 10 MB "
             })
         }
         return res.status(400).json({
-            message : err.message
+                message : err.message
         })
     }
     if(err){
         return res.status(400).json({
-            message : err.message
+            message:err.message 
         })
     }
-    next()
+    errorMiddleware(err,req,res,next)
 })
 
 

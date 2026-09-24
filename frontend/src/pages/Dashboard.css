@@ -296,7 +296,7 @@
 }
 
 .brand-label {
-    font-size: 9px;
+    font-size: 11px;
 
     letter-spacing: 3px;
 
@@ -306,7 +306,7 @@
 }
 
 .dashboard-title {
-    font-size: 22px;
+    font-size: 26px;
 
     letter-spacing: 4px;
 
@@ -330,7 +330,7 @@
 
     color: #777;
 
-    font-size: 10px;
+    font-size: 12px;
 
     letter-spacing: 1.5px;
 }
@@ -363,7 +363,7 @@
 
     color: #aaa;
 
-    font-size: 11px;
+    font-size: 13px;
 
     letter-spacing: 1px;
 
@@ -413,7 +413,7 @@
 .section-index {
     color: #7affaa;
 
-    font-size: 9px;
+    font-size: 11px;
 
     letter-spacing: 2.5px;
 
@@ -423,7 +423,7 @@
 }
 
 .welcome-section h2 {
-    font-size: clamp(35px, 5vw, 62px);
+    font-size: clamp(38px, 5.2vw, 66px);
 
     line-height: 1;
 
@@ -441,7 +441,7 @@
 .welcome-text {
     color: #707070;
 
-    font-size: 13px;
+    font-size: 15px;
 
     margin-top: 18px;
 
@@ -475,7 +475,7 @@
 
     color: #555;
 
-    font-size: 8px;
+    font-size: 10px;
 
     letter-spacing: 2px;
 
@@ -483,7 +483,7 @@
 }
 
 .stat-box strong {
-    font-size: 18px;
+    font-size: 21px;
 
     font-weight: 500;
 
@@ -519,7 +519,7 @@
 
 .upload-heading h3,
 .files-header h3 {
-    font-size: 18px;
+    font-size: 21px;
 
     font-weight: 500;
 }
@@ -527,7 +527,7 @@
 .upload-limit {
     color: #4d4d4d;
 
-    font-size: 9px;
+    font-size: 11px;
 
     letter-spacing: 1.5px;
 }
@@ -603,7 +603,7 @@
 .upload-main {
     color: #ddd;
 
-    font-size: 14px;
+    font-size: 16px;
 
     margin-bottom: 7px;
 
@@ -617,7 +617,7 @@
 .upload-sub {
     color: #555;
 
-    font-size: 11px;
+    font-size: 13px;
 }
 
 .upload-controls {
@@ -630,7 +630,7 @@
 .upload-button {
     padding: 11px 17px;
 
-    font-size: 10px;
+    font-size: 12px;
 
     letter-spacing: 1px;
 
@@ -704,7 +704,7 @@
 .file-count {
     color: #555;
 
-    font-size: 9px;
+    font-size: 11px;
 
     letter-spacing: 2px;
 }
@@ -773,7 +773,7 @@
 
     color: #363636;
 
-    font-size: 9px;
+    font-size: 11px;
 
     letter-spacing: 1px;
 }
@@ -791,7 +791,7 @@
 
     color: #7affaa;
 
-    font-size: 9px;
+    font-size: 11px;
 
     letter-spacing: 1px;
 
@@ -816,7 +816,7 @@
 .file-name {
     color: #ddd;
 
-    font-size: 13px;
+    font-size: 15px;
 
     font-weight: 500;
 
@@ -838,7 +838,7 @@
 
     color: #505050;
 
-    font-size: 9px;
+    font-size: 11px;
 
     letter-spacing: 0.5px;
 }
@@ -865,7 +865,7 @@
 
     color: #777;
 
-    font-size: 9px;
+    font-size: 11px;
 
     letter-spacing: 0.5px;
 
@@ -937,7 +937,7 @@
 }
 
 .empty-state h4 {
-    font-size: 13px;
+    font-size: 15px;
 
     font-weight: 500;
 
@@ -949,7 +949,7 @@
 .empty-state p {
     color: #4f4f4f;
 
-    font-size: 10px;
+    font-size: 12px;
 
     letter-spacing: 0.5px;
 }
@@ -991,7 +991,7 @@
 
     color: #383838;
 
-    font-size: 8px;
+    font-size: 10px;
 
     letter-spacing: 2px;
 }
@@ -1054,7 +1054,7 @@
     }
 
     .welcome-section h2 {
-        font-size: 40px;
+        font-size: 44px;
 
         letter-spacing: -2px;
     }
@@ -1154,4 +1154,698 @@
         right: 2%;
     }
 
+}
+
+
+/* =========================================================
+   DASHBOARD UI ENHANCEMENT
+   Functionality unchanged — visual layer only
+========================================================= */
+
+/* --- Header polish --- */
+.dashboard-header {
+    position: relative;
+}
+
+.dashboard-header::after {
+    content: "AUTH // ACTIVE";
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+    padding: 0 8px;
+    background: #050505;
+    color: #3d3d3d;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+/* --- Stats: stronger security-console look --- */
+.vault-stats {
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 0 30px rgba(122, 255, 170, 0.015);
+}
+
+.vault-stats::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 45px;
+    height: 1px;
+    background: #7affaa;
+    box-shadow: 0 0 12px rgba(122, 255, 170, 0.7);
+}
+
+.stat-box {
+    position: relative;
+    min-width: 125px;
+    overflow: hidden;
+}
+
+.stat-number {
+    position: absolute;
+    top: 9px;
+    right: 10px;
+    color: #252525;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.stat-line {
+    display: block;
+    width: 18px;
+    height: 1px;
+    margin-top: 8px;
+    background: #282828;
+    transition: width 0.25s ease, background 0.25s ease;
+}
+
+.stat-box:hover .stat-line {
+    width: 38px;
+    background: #7affaa;
+    box-shadow: 0 0 8px rgba(122, 255, 170, 0.45);
+}
+
+.stat-box strong {
+    transition: color 0.25s ease;
+}
+
+.stat-box:hover strong {
+    color: #7affaa;
+}
+
+/* --- Upload zone --- */
+.upload-box {
+    min-height: 165px;
+    border-style: dashed;
+    background:
+        linear-gradient(rgba(122, 255, 170, 0.018), rgba(122, 255, 170, 0.018)),
+        #080808;
+}
+
+.upload-box::after {
+    content: "SECURE DROP ZONE";
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    color: #292929;
+    font-size: 9px;
+    letter-spacing: 2px;
+    pointer-events: none;
+}
+
+.upload-corner {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    pointer-events: none;
+}
+
+.upload-corner-tl {
+    top: 0;
+    left: 0;
+    border-top: 1px solid #7affaa;
+    border-left: 1px solid #7affaa;
+}
+
+.upload-corner-br {
+    right: 0;
+    bottom: 0;
+    border-right: 1px solid #7affaa;
+    border-bottom: 1px solid #7affaa;
+}
+
+.upload-icon {
+    position: relative;
+    border-color: #333;
+    background: #060606;
+    box-shadow: inset 0 0 20px rgba(122, 255, 170, 0.025);
+}
+
+.upload-icon::before {
+    content: "";
+    position: absolute;
+    inset: 6px;
+    border: 1px solid #191919;
+}
+
+.upload-icon span {
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 0 12px rgba(122, 255, 170, 0.8);
+}
+
+.upload-main-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.upload-main-row .upload-main {
+    margin-bottom: 0;
+}
+
+.selected-badge {
+    padding: 4px 7px;
+    border: 1px solid rgba(122, 255, 170, 0.28);
+    color: #7affaa;
+    background: rgba(122, 255, 170, 0.035);
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    flex-shrink: 0;
+}
+
+.cancel-selection {
+    padding: 4px 7px;
+    border: 1px solid #332020;
+    color: #777;
+    background: transparent;
+    font-size: 8px;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: 0.2s ease;
+}
+
+.cancel-selection:hover {
+    border-color: #d96b6b;
+    color: #d96b6b;
+    box-shadow: 0 0 12px rgba(217, 107, 107, 0.08);
+}
+
+.upload-box:hover .upload-icon {
+    border-color: rgba(122, 255, 170, 0.35);
+    box-shadow:
+        0 0 20px rgba(122, 255, 170, 0.06),
+        inset 0 0 20px rgba(122, 255, 170, 0.025);
+}
+
+/* --- Search --- */
+.search-shell {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 54px;
+    margin-bottom: 24px;
+    background: #080808;
+    border: 1px solid #202020;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.search-shell:focus-within {
+    border-color: rgba(122, 255, 170, 0.5);
+    box-shadow: 0 0 25px rgba(122, 255, 170, 0.035);
+}
+
+.search-icon {
+    width: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #7affaa;
+    font-size: 16px;
+    transform: rotate(-45deg);
+    opacity: 0.75;
+}
+
+.search-shell input {
+    flex: 1;
+    min-width: 0;
+    padding: 16px 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #f5f5f5;
+    font-size: 15px;
+    letter-spacing: 0.2px;
+}
+
+.search-shell input::placeholder {
+    color: #4b4b4b;
+}
+
+.search-hint {
+    margin-right: 16px;
+    color: #383838;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+/* --- File list header --- */
+.files-section {
+    position: relative;
+}
+
+.files-section::before {
+    content: "INDEX / USER STORAGE";
+    position: absolute;
+    right: 0;
+    top: -3px;
+    color: #252525;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+/* --- File cards --- */
+.file-card {
+    min-height: 88px;
+    background:
+        linear-gradient(90deg, rgba(122, 255, 170, 0.012), transparent 28%),
+        #080808;
+    overflow: hidden;
+}
+
+.file-card::after {
+    content: "PRIVATE";
+    position: absolute;
+    right: 18px;
+    top: 7px;
+    color: #222;
+    font-size: 8px;
+    letter-spacing: 1.5px;
+    pointer-events: none;
+}
+
+.file-scan-line {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 1px;
+    background: #7affaa;
+    box-shadow: 0 0 10px rgba(122, 255, 170, 0.7);
+    transition: width 0.35s ease;
+}
+
+.file-card:hover .file-scan-line {
+    width: 100%;
+}
+
+.file-type {
+    position: relative;
+    background: #060606;
+}
+
+.file-type::after {
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    right: 4px;
+    bottom: 4px;
+    border-right: 1px solid #7affaa;
+    border-bottom: 1px solid #7affaa;
+    opacity: 0.7;
+}
+
+.file-name-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+.file-secure-badge {
+    padding: 3px 6px;
+    border: 1px solid #1f3327;
+    color: #527961;
+    font-size: 8px;
+    letter-spacing: 1px;
+    flex-shrink: 0;
+}
+
+.file-card:hover .file-secure-badge {
+    border-color: rgba(122, 255, 170, 0.3);
+    color: #7affaa;
+}
+
+.file-name {
+    transition: color 0.2s ease;
+}
+
+.file-card:hover .file-name {
+    color: #f5f5f5;
+}
+
+.file-meta span:first-child {
+    color: #666;
+}
+
+.file-actions {
+    position: relative;
+    z-index: 2;
+}
+
+/* --- Pagination --- */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 30px;
+}
+
+.pagination > span {
+    min-width: 100px;
+    text-align: center;
+    color: #4d4d4d;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+/* --- Empty state --- */
+.empty-state {
+    position: relative;
+    overflow: hidden;
+}
+
+.empty-state::before,
+.empty-state::after {
+    content: "";
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    border-color: #252525;
+    border-style: solid;
+    pointer-events: none;
+}
+
+.empty-state::before {
+    top: 12px;
+    left: 12px;
+    border-width: 1px 0 0 1px;
+}
+
+.empty-state::after {
+    right: 12px;
+    bottom: 12px;
+    border-width: 0 1px 1px 0;
+}
+
+.empty-icon {
+    box-shadow: 0 0 20px rgba(122, 255, 170, 0.035);
+}
+
+/* --- Subtle page movement --- */
+.dashboard-grid {
+    animation: gridDrift 18s linear infinite;
+}
+
+@keyframes gridDrift {
+    from {
+        transform: translate(0, 0);
+    }
+    to {
+        transform: translate(27px, 27px);
+    }
+}
+
+/* --- Mobile enhancements --- */
+@media (max-width: 700px) {
+    .dashboard-header::after,
+    .files-section::before,
+    .upload-box::after {
+        display: none;
+    }
+
+    .stat-box {
+        min-width: 105px;
+    }
+
+    .upload-main-row {
+        flex-wrap: wrap;
+    }
+
+    .search-hint {
+        display: none;
+    }
+
+    .search-icon {
+        width: 42px;
+    }
+
+    .file-card::after {
+        display: none;
+    }
+
+    .file-name-row {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .file-secure-badge {
+        display: inline-block;
+    }
+
+    .pagination {
+        flex-wrap: wrap;
+    }
+}
+
+/* ============================= */
+/* VAULT TOAST */
+/* ============================= */
+
+.vault-toast {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+
+    z-index: 9999;
+
+    min-width: 320px;
+    max-width: 420px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 16px 18px;
+
+    background: #0b0b0b;
+
+    border: 1px solid #272727;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.6);
+
+    animation: vaultToastIn 0.25s ease;
+}
+
+
+.vault-toast-indicator {
+    width: 4px;
+    height: 42px;
+
+    flex-shrink: 0;
+}
+
+
+.vault-toast-success {
+    border-color:
+        rgba(122, 255, 170, 0.35);
+}
+
+
+.vault-toast-success
+.vault-toast-indicator {
+    background: #7affaa;
+
+    box-shadow:
+        0 0 14px
+        rgba(122, 255, 170, 0.7);
+}
+
+
+.vault-toast-error {
+    border-color:
+        rgba(255, 90, 90, 0.35);
+}
+
+
+.vault-toast-error
+.vault-toast-indicator {
+    background: #ff5c5c;
+
+    box-shadow:
+        0 0 14px
+        rgba(255, 90, 90, 0.7);
+}
+
+
+.vault-toast-content {
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+
+    flex: 1;
+}
+
+
+.vault-toast-content strong {
+    font-size: 12px;
+
+    letter-spacing: 2px;
+}
+
+
+.vault-toast-success
+.vault-toast-content strong {
+    color: #7affaa;
+}
+
+
+.vault-toast-error
+.vault-toast-content strong {
+    color: #ff5c5c;
+}
+
+
+.vault-toast-content span {
+    color: #d0d0d0;
+
+    font-size: 15px;
+
+    line-height: 1.4;
+}
+
+
+.vault-toast-close {
+    border: none;
+
+    background: transparent;
+
+    color: #777;
+
+    font-size: 26px;
+
+    cursor: pointer;
+
+    padding: 2px 4px;
+}
+
+
+.vault-toast-close:hover {
+    color: #ffffff;
+}
+
+
+@keyframes vaultToastIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateX(30px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateX(0);
+    }
+
+}
+
+/* ============================= */
+/* RENAME MODAL */
+/* ============================= */
+
+.rename-overlay {
+    position: fixed;
+    inset: 0;
+
+    z-index: 9998;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.75);
+}
+
+
+.rename-modal {
+    width: min(500px, 90%);
+
+    padding: 28px;
+
+    background: #090909;
+
+    border: 1px solid rgba(122, 255, 170, 0.3);
+
+    box-shadow:
+        0 0 40px rgba(122, 255, 170, 0.08);
+}
+
+
+.rename-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    margin-bottom: 24px;
+}
+
+
+.rename-header h3 {
+    margin-top: 6px;
+}
+
+
+.rename-close {
+    border: none;
+    background: transparent;
+
+    color: #777;
+
+    font-size: 28px;
+
+    cursor: pointer;
+}
+
+
+.rename-close:hover {
+    color: #fff;
+}
+
+
+.rename-modal input {
+    width: 100%;
+
+    padding: 14px 16px;
+
+    background: #050505;
+
+    color: #f5f5f5;
+
+    border: 1px solid rgba(122, 255, 170, 0.25);
+
+    outline: none;
+
+    font-size: 16px;
+}
+
+
+.rename-modal input:focus {
+    border-color: #7affaa;
+
+    box-shadow:
+        0 0 15px rgba(122, 255, 170, 0.08);
+}
+
+
+.rename-actions {
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 12px;
+
+    margin-top: 20px;
 }

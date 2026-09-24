@@ -4,6 +4,7 @@ import authMiddleware from "../middleware/authmiddleware.js"
 import File from "../models/file.js"
 import fs from "fs/promises"
 import { uploadLimiter,downloadLimiter } from "../middleware/rateLimitmiddleware.js"
+import mongoose from "mongoose"
 
 const router = express.Router()
 
@@ -11,26 +12,28 @@ router.post(
     "/upload",
     authMiddleware,
     uploadLimiter,
-    upload.single("file"),
+    upload.array("files",5),
     async (req,res)=>{
         try {
-            if(!req.file){
-                return res.status(400).json({
-                    message:"No file uploaded"
-                })
-            }
-            const file = await File.create({
-                originalName : req.file.originalname,
-                fileName : req.file.filename,
-                filePath : req.file.path,
-                mimeType : req.file.mimetype,
-                size : req.file.size,
-                owner : req.user
+           if(!req.files || req.files.length === 0){
+            return res.status(400).json({
+                message:"No files uploaded"
             })
+           }
+           const files = await File.insertMany(
+            req.files.map((file)=>({
+                originalName:file.originalname,
+                fileName:file.filename,
+                filePath:file.path,
+                mimeType:file.mimetype,
+                size:file.size,
+                owner:req.user
+            }))
+           )
 
             res.status(201).json({
-                message:"File uploaded successfully",
-                file
+                message:"Files uploaded successfully",
+                files
             })
         }catch(error){
             res.status(500).json({
@@ -83,29 +86,13 @@ router.get("/",authMiddleware,async (req,res)=>{
 })
 
 
-
-router.get("/:id",authMiddleware,async (req,res)=>{
-    try{
-        const file = await File.findOne({
-            _id : req.params.id,
-            owner : req.user
-        })
-        if(!file){
-            return res.status(404).json({
-                message :"File not Found"
-            })
-        }
-        res.json({
-            file
-        })
-    }catch(error){
-        res.status(500).json({
-            message:"Failed to Fetch File"
-        })
-    }
-})
 router.get("/:id/download",authMiddleware,downloadLimiter,async (req,res)=>{
     try{
+        if(!mongoose.Types.ObjectId.isValid(req.params.id)){
+            return res.status(400).json({
+                message:"Invalid File ID"
+            })
+        }
         const file = await File.findOne({
             _id : req.params.id,
             owner : req.user
@@ -131,8 +118,40 @@ router.get("/:id/download",authMiddleware,downloadLimiter,async (req,res)=>{
     }
 })
 
+
+router.get("/:id",authMiddleware,async (req,res)=>{
+    try{
+        if(!mongoose.Types.ObjectId.isValid(req.params.id)){
+            return res.status(400).json({
+                message:"Invalid file ID"
+            })
+        }
+        const file = await File.findOne({
+            _id : req.params.id,
+            owner : req.user
+        })
+        if(!file){
+            return res.status(404).json({
+                message :"File not Found"
+            })
+        }
+        res.json({
+            file
+        })
+    }catch(error){
+        res.status(500).json({
+            message:"Failed to Fetch File"
+        })
+    }
+})
+
 router.delete("/:id",authMiddleware,async(req,res)=>{
     try{
+        if(!mongoose.Types.ObjectId.isValid(req.params.id)){
+            return res.status(400).json({
+                message:"Invalid file ID"
+            })
+        }
         const file = await File.findOne({
             _id:req.params.id,
             owner : req.user
@@ -158,7 +177,23 @@ router.delete("/:id",authMiddleware,async(req,res)=>{
 
 router.patch("/:id",authMiddleware,async(req,res)=>{
     try{
+        if(!mongoose.Types.ObjectId.isValid(req.params.id)){
+            return res.status(400).json({
+                message:"Invalid file ID"
+            })
+        }
         const {originalName} = req.body
+
+        if(!originalName || typeof originalName !== "string"){
+            return res.status(400).json({
+                message:"Valid file name is required"
+            })
+        }
+        if(originalName.length > 255){
+            return res.status(400).json({
+                message:"File name is too long"
+            })
+        }
 
         if(!originalName){
             return res.status(400).json({
